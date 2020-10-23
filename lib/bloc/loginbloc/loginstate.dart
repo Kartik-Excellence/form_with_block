@@ -1,13 +1,16 @@
 import 'package:equatable/equatable.dart';
 
 class LoginState extends Equatable {
-  String email;
-  String password;
-  LoginState(this.email, this.password);
+  const LoginState();
   @override
-  // TODO: implement props
-  List<Object> get props => [email, password];
+  List<Object> get props => [];
+}
 
-  @override
+class EmailState extends LoginState {
+  final String email;
+  const EmailState(this.email);
+  List<Object> get props => [email];
   bool get stringify => true;
 }
+
+class LoadState extends LoginState {}

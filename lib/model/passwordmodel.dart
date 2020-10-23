@@ -10,7 +10,6 @@ class PasswordModel extends FormzInput<String, PasswordValidator> {
 
   @override
   PasswordValidator validator(String value) {
-    // TODO: implement validator
     return _passwordRegex.hasMatch(value) ? null : PasswordValidator.invalid;
   }
 }
