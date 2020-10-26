@@ -1,15 +1,18 @@
+import 'dart:io';
+
 import 'package:formz/formz.dart';
 
-enum PasswordValidator { invalid }
-
-class PasswordModel extends FormzInput<String, PasswordValidator> {
-  PasswordModel.pure() : super.pure('');
-  PasswordModel.dirty(String value) : super.dirty(value);
-  final _passwordRegex = RegExp(
-      r'^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$');
-
+class PasswordModel extends FormzInput<String, String> {
+   const PasswordModel.pure() : super.pure('password Here');
+   const PasswordModel.dirty(value) : super.dirty(value);
+  static final RegExp regExp =
+      RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
   @override
-  PasswordValidator validator(String value) {
-    return _passwordRegex.hasMatch(value) ? null : PasswordValidator.invalid;
+  validator(String value) {
+    // TODO: implement validator
+    if (regExp.hasMatch(value))
+      return 'valid';
+    else
+      return 'INVALID';
   }
 }

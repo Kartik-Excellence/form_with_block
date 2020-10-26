@@ -9,19 +9,25 @@ class LoginEvent extends Equatable {
   bool get stringify => true;
 }
 
-class EmailInput extends LoginEvent {
+class EmailChanged extends LoginEvent {
   final String email;
-  EmailInput(this.email);
+  EmailChanged(this.email);
   @override
   List<Object> get props => [email];
 }
 
-class PasswordInput extends LoginEvent {
+class PasswordChanged extends LoginEvent {
   final String password;
-  PasswordInput(this.password);
+  PasswordChanged(this.password);
   @override
   List<Object> get props => [password];
 }
 
-class Submitt extends LoginEvent {
+class ValidateLoginEvent extends LoginEvent {
+  final String email;
+  final String password;
+  ValidateLoginEvent(this.email, this.password);
+  @override
+  List<Object> get props => [email, password];
 }
+class FormSubmitt extends LoginEvent{}
